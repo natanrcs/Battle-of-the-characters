@@ -43,12 +43,16 @@ class Character:
 
     def battle(self, enemy: "Character") -> str:
         print(f"Battle: {self.name} vs {enemy.name}")
+        if self.damage == 0 and enemy.damage == 0:
+            return "draw"
         rounds = 0
         print("Starting Battle")
         while self.is_alive and enemy.is_alive and rounds < 100:
             print(f"attack: {self.attack(enemy)}")
             print(f"attack: {enemy.attack(self)}")
             rounds = rounds + 1
+        if self.is_alive and enemy.is_alive:
+            return "draw"
         if self.is_alive:
             winner = self.name
             return f"winner: {winner}"
