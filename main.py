@@ -43,10 +43,9 @@ class Character:
 
     def battle(self, enemy: "Character") -> str:
         print(f"Battle: {self.name} vs {enemy.name}")
-        if self.damage == 0 and enemy.damage == 0:
-            return "draw"
         rounds = 0
         print("Starting Battle")
+        
         while self.is_alive and enemy.is_alive and rounds < 100:
             print(f"attack: {self.attack(enemy)}")
             print(f"attack: {enemy.attack(self)}")
@@ -61,18 +60,14 @@ class Character:
             return f"winner: {winner}"
 
 
-hero = Character("hero", 100, 10)
-hero.take_damage(90)
-print(hero.life)
-print(hero.heal(100))
+if __name__ == "__main__":
+    superman = Character("superman", 100, 30)
+    aquaman = Character("aquaman", 100, 25)
+    goblin = Character("goblin", 20, 5)
+    witch = Character("witch of the castle", 100, 45)
+    mago = Character("mago of the forest",85,67)
+    batgirl = Character("batgirl",90,85)
 
-superman = Character("superman", 100, 30)
-lex = Character("lex lutor", 50, 10)
-goblin = Character("goblin", 20, 5)
-witch = Character("witch of the castle",100,45)
-fairy = Character("fairy",100,35)
-
-pacifist1 = Character("monk", 100, 0)
-pacifist2 = Character("priest", 100, 0)
-print(pacifist1.battle(pacifist2))
-print(pacifist2.battle(pacifist1))
+    print(superman.battle(goblin))
+    print(aquaman.battle(witch))
+    print(mago.battle(batgirl))
